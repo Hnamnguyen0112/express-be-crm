@@ -8,7 +8,13 @@ const envVarsSchema = Joi.object()
   .keys({
     NODE_ENV: Joi.string().valid('production', 'development', 'test').required(),
     PORT: Joi.number().default(3000),
-    MONGODB_URL: Joi.string().required().description('Mongo DB url'),
+    DATABASE_HOST: Joi.string().required().description('Database host'),
+    DATABASE_DATABASE: Joi.string().required().description('Database name'),
+    DATABASE_PORT: Joi.number().required().description('Database port'),
+    DATABASE_USER: Joi.string().required().description('Database user'),
+    DATABASE_PASSWORD: Joi.string().required().description('Database password'),
+    DATABASE_POOL_MIN: Joi.number().required().description('Database pool min'),
+    DATABASE_POOL_MAX: Joi.number().required().description('Database pool max'),
     JWT_SECRET: Joi.string().required().description('JWT secret key'),
     JWT_ACCESS_EXPIRATION_MINUTES: Joi.number().default(30).description('minutes after which access tokens expire'),
     JWT_REFRESH_EXPIRATION_DAYS: Joi.number().default(30).description('days after which refresh tokens expire'),
@@ -35,8 +41,14 @@ if (error) {
 module.exports = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
-  mongoose: {
-    url: envVars.MONGODB_URL + (envVars.NODE_ENV === 'test' ? '-test' : '')
+  database: {
+    host: envVars.DATABASE_HOST,
+    port: envVars.DATABASE_PORT,
+    database: envVars.DATABASE_DATABASE,
+    user: envVars.DATABASE_USER,
+    password: envVars.DATABASE_PASSWORD,
+    poolMin: envVars.DATABASE_POOL_MIN,
+    poolMax: envVars.DATABASE_POOL_MAX
   },
   jwt: {
     secret: envVars.JWT_SECRET,
