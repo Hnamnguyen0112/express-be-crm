@@ -1,3 +1,5 @@
 {
-  "*.js": "eslint"
+  "*.ts": [
+    "yarn lint"
+  ]
 }
