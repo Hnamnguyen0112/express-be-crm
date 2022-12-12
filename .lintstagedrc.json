@@ -1,6 +1,6 @@
 {
   "*.ts": [
-    "yarn lint",
-    "yarn prettier"
+    "yarn lint:fix",
+    "yarn prettier:fix"
   ]
 }
