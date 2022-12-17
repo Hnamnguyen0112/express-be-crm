@@ -20,6 +20,7 @@
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "strictPropertyInitialization": false,
     "paths": {
       "*": [
         "node_modules/*"

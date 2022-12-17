@@ -1,6 +1,5 @@
-import * as Bluebird from 'bluebird';
+export {};
 
 declare global {
   var logger: any;
-  export interface Promise<T> extends Bluebird<T> {}
 }

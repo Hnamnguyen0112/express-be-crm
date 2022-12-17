@@ -4,23 +4,24 @@ services:
   node-app:
     build: .
     image: node-app
-    environment:
-      - MONGODB_URL=mongodb://mongodb:27017/express-be-crm
     ports:
       - '3000:3000'
     depends_on:
-      - mongodb
+      - mysql
     volumes:
       - .:/usr/src/node-app
     networks:
       - node-network
 
-  mongodb:
-    image: mongo:4.2.1-bionic
+  mysql:
+    image: mysql:5.7
     ports:
-      - '27017:27017'
+      - '3306:3306'
+    environment:
+      - MYSQL_DATABASE=test
+      - MYSQL_ROOT_PASSWORD=mauFJcuf5dhRMQrjj
     volumes:
-      - dbdata:/data/db
+      - dbdata:/var/lib/mysql
     networks:
       - node-network
 
