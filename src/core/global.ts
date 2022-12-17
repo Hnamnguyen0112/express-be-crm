@@ -1,5 +1,5 @@
-import logger from '../config/logger';
-
 export default function initGlobal() {
-  global.logger = logger;
+  /* eslint-disable global-require */
+  global.Promise = require('bluebird');
+  /* eslint-enable global-require */
 }
