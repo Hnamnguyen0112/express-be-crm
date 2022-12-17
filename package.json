@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "pm2 start ecosystem.config.json --no-daemon",
-    "dev": "cross-env NODE_ENV=development nodemon src/index.ts",
+    "dev": "cross-env NODE_ENV=development nodemon src/index.ts --exec \"yarn lint && ts-node-dev\"",
     "build": "swc src -d dist --source-maps --copy-files",
     "build:tsc": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -33,8 +33,10 @@
   "homepage": "https://github.com/Hnamnguyen0112/express-be-crm#readme",
   "dependencies": {
     "@godaddy/terminus": "^4.11.2",
+    "@trpc/server": "^10.5.0",
     "bcrypt": "^5.1.0",
     "bluebird": "^3.7.2",
+    "bluebird-global": "^1.0.1",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
@@ -54,6 +56,7 @@
     "uuid": "^9.0.0",
     "validator": "^13.7.0",
     "winston": "^3.8.2",
+    "xss-clean": "^0.1.1",
     "zod": "^3.20.0"
   },
   "devDependencies": {
@@ -61,6 +64,7 @@
     "@swc/core": "^1.3.22",
     "@types/bcrypt": "^5.0.0",
     "@types/bluebird": "^3.5.38",
+    "@types/bluebird-global": "^3.5.13",
     "@types/compression": "^1.7.2",
     "@types/cors": "^2.8.13",
     "@types/dotenv": "^8.2.0",
@@ -89,6 +93,7 @@
     "nodemon": "^2.0.20",
     "prettier": "^2.8.0",
     "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^4.9.4"
   }
 }

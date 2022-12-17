@@ -1,7 +1,15 @@
 {
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
   "env": {
     "node": true,
-    "jest": true
+    "jest": true,
+    "es2021": true
   },
   "parser": "@typescript-eslint/parser",
   "extends": [
@@ -9,8 +17,9 @@
     "plugin:jest/recommended",
     "plugin:security/recommended",
     "prettier",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "plugins": [
     "jest",
@@ -19,15 +28,28 @@
     "@typescript-eslint"
   ],
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaVersion": 12,
+    "project": "./tsconfig.json"
   },
   "rules": {
     "no-console": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "prettier/prettier": "error",
     "func-names": "off",
     "no-underscore-dangle": "off",
-    "consistent-return": "off",
-    "jest/expect-expect": "off",
-    "security/detect-object-injection": "off"
+    "@typescript-eslint/no-unsafe-call": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
   }
 }
